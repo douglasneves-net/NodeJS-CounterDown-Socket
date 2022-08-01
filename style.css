@@ -20,7 +20,9 @@ span{
   font-size: 80px;
   font-weight: 300;
 }
-.circular-progress{
+
+
+#timer{
   position: relative;
   height: 350px;
   width: 350px;
@@ -30,7 +32,7 @@ span{
   justify-content: center;
   align-items: center;
 }
-.circular-progress::before{
+#timer::before{
   content: '';
   position:absolute;
   height: 300px;
