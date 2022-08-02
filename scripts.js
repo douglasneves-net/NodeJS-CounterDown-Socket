@@ -1,21 +1,16 @@
 class CounterDown{
 
-  constructor(){
+  constructor($timer = 60){
     this.v_html = document.querySelector('#timer');
     this.v_child = document.createElement('span');
-    this.v_showTimer = '';
-    this.progressStartValue = 0;
-    this.progressEndValue = 10;
+    this.v_child.setAttribute('id', 'showTimer');
+    this.v_html.appendChild(this.v_child);
+    this.v_showTimer = document.querySelector('#showTimer');;
+    this.progressStartValue = 1;
+    this.progressEndValue = $timer;
     this.speed = 1000;
     this.time = '';
     this.init();
-  }
-
-
-  injectHTMLTimer(){
-    this.v_child.setAttribute('id', 'showTimer');
-    this.v_html.appendChild(this.v_child);
-    this.v_showTimer = document.querySelector('#showTimer');
   }
 
 
@@ -34,23 +29,21 @@ class CounterDown{
 
   timerLoad(){
     this.progressStartValue++;
-    this.showTimer();
     this.v_html.style.background = `conic-gradient(#7d2ae8 ${ this.progressStartValue  * 3.6}deg, #ededed 0deg)`
-    console.log(this.progressStartValue);
     if(this.progressStartValue == this.progressEndValue){
       clearInterval(this.time);
     }
+    this.showTimer();
   }
 
 
   init(){
-    this.injectHTMLTimer();
     this.showTimer();
-    this.time = setInterval(() => this.timerLoad() , 1000);
+    this.time = setInterval(() => this.timerLoad() , this.speed);
   }
 
 
 }
 
 
-let timer = new CounterDown();
+let timer = new CounterDown('120');
